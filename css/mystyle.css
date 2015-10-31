@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+.error{
+
+	color:red;
+}
+
+.success_message{
+	background-color: green;
+	color: #fff;
+	padding:10px 0px 10px 10px;
+}
+
+.error_message{
+	background-color: red;
+	color: #fff;
+	padding:10px 0px 10px 10px;
+}
+
+.user-info{
+	float:right;
+}
+
+.navbar-brand > img {
+	margin-top:-15px;
+	float:left;
+	margin-right:20px;
+}
+
+.navbar-brand .site-name {
+	float:left;
+	font-family: 'Bree Serif', serif;
+}
+
+.league-title{
+	font-family: "Bree serif", serif;
+	font-size: 20px;
+	color: #B71520;
+}
+
+.gameweek-filter{
+	margin-right: 100px;
+
+}
+
+.team-standing{
+	font-size: 11px;
+}
