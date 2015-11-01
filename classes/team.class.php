@@ -22,7 +22,7 @@ class team
 								WHERE t.league_id =".$this->leagueid." AND ts.season=".$this->season." 
 								ORDER BY pts DESC, GD DESC");
 
-		echo("<table class=\"table table-striped\">");
+		echo("<table class=\"table table-bordered\">");
 		echo("<thead><tr><th>CLUB</th><th>Pld</th><th>Pts</th></thead>");
 		echo("<tbody>");
 		while ($row=$m_db->Fetch($result)){
@@ -89,6 +89,13 @@ class team
 		}
 	}
 
+	function teamCoach(){
+		global $m_db;
+		$result = $m_db->Query("SELECT CONCAT(firstname,lastname) AS fullname, nationality FROM sbm_team_coach WHERE team_id=".$this->id);
+		$row=$m_db->Fetch($result);
+		echo("Coach Name:<b>".$row['fullname']."</b>&nbsp;&nbsp;&nbsp;&nbsp;Nationality:<b>". $row['nationality']."</b>");
+	}
+
 
 	function teamLeaguePosition(){
 		global $m_db;
@@ -113,6 +120,17 @@ class team
 			echo("</tr>");
 		}
 		echo("</tbody></table>");
+	}
+
+	function teamName(){
+		global $m_db;
+		$result = $m_db->Query("SELECT team_fullname FROM sbm_team WHERE team_id=".$this->id);
+		$row=$m_db->Fetch($result);
+		echo($row['team_fullname']);
+	}
+
+	function teamLastResults(){
+
 	}
 
 }

@@ -1,3 +1,12 @@
+<?php
+// to get the league name 
+	include("classes/league.class.php");
+	$oLeague = new league();
+	$oLeague->id = $_GET['leagueid'];
+?>
+	<div class="league-title"><?php $oLeague->leagueName(); ?> </div>
+
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">

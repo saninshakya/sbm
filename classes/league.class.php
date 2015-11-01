@@ -40,6 +40,12 @@ class league
 		echo("</tbody></table>");
 	}
 
+	function leagueName(){
+		global $m_db;
+		$league = $m_db->Query("SELECT league_name FROM sbm_league WHERE league_id='".$this->id."'");
+		$row=$m_db->Fetch($league);
+		echo($row['league_name']);
+	}
 	
 }
 

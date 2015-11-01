@@ -36,7 +36,23 @@
 	font-family: "Bree serif", serif;
 	font-size: 20px;
 	color: #B71520;
+	padding-left: 15px;
 }
+
+.team-title{
+	font-family: "Bree serif", serif;
+	font-size: 20px;
+	color: #B71520;
+	padding-left: 15px
+}
+
+.small-league-title{
+	font-family: "Bree serif", serif;
+	font-size: 14px;
+	color: #B71520;
+	padding-left: 30px;
+}
+
 
 .gameweek-filter{
 	margin-right: 100px;
@@ -45,4 +61,8 @@
 
 .team-standing{
 	font-size: 11px;
+}
+
+.coach-info{
+	padding: 20px 0px;
 }
