@@ -34,7 +34,7 @@ class user
 			return "FILL_THIS_FIELD";
 		}
 
-		$result = $m_db->Query("SELECT * FROM sbm_user WHERE username ='" . $this->user ."' and password='" . md5($this->pass) . "'");
+		$result = $m_db->Query("SELECT user_id, username FROM sbm_user WHERE username ='" . $this->user ."' and password='" . md5($this->pass) . "'");
 		if ($m_db->countRows($result) > 0)
 		{
 			$_SESSION['chk'] = true;

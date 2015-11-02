@@ -1,5 +1,4 @@
 <?php
-
 // session_start();
 include("classes/user.class.php");
 $oLogin=new user();
@@ -12,7 +11,10 @@ if (isset($_POST['login']))
     {
         case 'SUCCESS':
             $_SESSION['success_message']="Login Successfully!";
-            echo ("<script type=\"text/javascript\">window.location=\"index.php\"</script>");
+            if (isset($_SESSION['currentURL'])!="")
+                echo ("<script type=\"text/javascript\">window.location=\"index.php".$_SESSION['currentURL']."\"</script>");
+            else
+                echo ("<script type=\"text/javascript\">window.location=\"index.php\"</script>");
             break;
                     
         case 'INVALID':

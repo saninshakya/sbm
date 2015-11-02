@@ -32,6 +32,10 @@ switch ($page)
 	case 'team-info':
 		include("includes/team-info.inc.php");
 		break;
+
+	case 'bid':
+		include("includes/bid.inc.php");
+		break;
 	
 	default:
 		include("includes/main.inc.php");

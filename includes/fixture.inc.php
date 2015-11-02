@@ -64,6 +64,76 @@
 </div><!-- end container -->
 
 
+<div class="container">
+  <!-- Modal LoginInfo -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Request</h4>
+        </div>
+        <div class="modal-body">
+          <p>Please Login Before You continue.!!</p>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+		<a href="index.php?page=login" type="button" class="btn btn-default">OK</a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+    <!-- Modal Bid -->
+  <div class="modal fade" id="bid" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Soccer BetWay Management</h4>
+        </div>
+        <div class="modal-body">
+        	<script>
+				$('#bid').on('show.bs.modal', function(e) {
+					var weekly_odd_id = e.relatedTarget.dataset.weeklyoddid;
+					var odd = e.relatedTarget.dataset.odd;
+					$('#odd').val(odd);
+					$('#weeklyoddid').val(weekly_odd_id);
+					 // var dataArray = [],
+					 // weekly_odd_id = e.relatedTarget.dataset.weeklyoddid,
+					 // odd = e.relatedTarget.dataset.odd;
+					 // dataArray.push(weekly_odd_id);  
+					 // dataArray.push(odd);
+					 // var data = JSON.stringify(dataArray);
+					 // console.log('dataArray', data);
+					});
+
+			</script>
+            <form class="form-horizontal" id="defaultForm" method="post" action="<?php echo($_SERVER['PHP_SELF'] . "?page=bid"); ?>">
+                <div class="form-group">
+                    <label for="bid-amount" class="col-md-3 control-label">Bid Amount*</label>
+                    <div class="col-md-9">
+                        <input type="text" id="amount" class="form-control" name="amount" placeholder="Amount in Baht">
+                        <span class="error"><?php echo($oForm->Error("bid")); ?></span>
+                    </div>
+                    <input type="hidden" id="odd" class="form-control" name="odd">
+                    <input type="hidden" id="weeklyoddid" class="form-control" name="weeklyoddid">
+                </div>
+                <div style="margin-top:10px" class="form-group">
+                    <div class="col-sm-12 controls">
+            		<input type="submit" class="btn btn-default pull-right" name="bid-submit" value="BID NOW">
+            		</div>
+            	</div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 <script type="text/javascript">
