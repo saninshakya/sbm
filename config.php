@@ -18,7 +18,7 @@ $default=array(
 	'DB_SERVER'=>'Localhost',
 	'DB_USER'=>'root',
 	'DB_PASS'=>'',
-	'DB_NAME'=>'sbm'
+	'DB_NAME'=>'sbm_v1'
 	
 	);
 
