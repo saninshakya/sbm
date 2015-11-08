@@ -49,7 +49,7 @@
 		<div class="col-md-1">
 			<div class="team-standing">
 			<!-- For team standing -->
-			Team standing
+            <label>Team Standing</label>
 			<?php
 				include("classes/team.class.php");
 				$oTeam = new team();
