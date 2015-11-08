@@ -60,7 +60,11 @@
 }
 
 .team-standing{
-	font-size: 11px;
+    float: left;
+	font-size: 10px;
+}
+.team-standing label {
+    float: left;
 }
 
 .coach-info{
