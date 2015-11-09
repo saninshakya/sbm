@@ -8,6 +8,8 @@ for user registration
 */
 class team
 {
+	var $teamid;
+	
 	function teamStanding(){
 		global $m_db;
 		$result = $m_db->Query("SELECT 
@@ -70,30 +72,41 @@ class team
 	}
 
 
-	function teamMembers(){
+	function teamMembers($teamid){
 		global $m_db;
-		$result = $m_db->Query("SELECT * FROM sbm_player WHERE team_id=".$this->id);
-		echo("<table class=\"table table-striped\">");
-		echo("<thead><tr><th>Squad Member</th><th>Position</th><th>DOB</th><th>Contact From</th><th>Contract Till</th><th>Shirt Number</th><th>Status</th></thead>");
-		echo("<tbody>");
-		while ($row=$m_db->Fetch($result)){
-			echo("<tr>");
-			echo("<td>".$row['player_firstname']. " ". $row['player_lastname']. "</td>");
-			echo("<td>".$row['position']. "</td>");
-			echo("<td>".$row['player_dob']. "</td>");
-			echo("<td>".$row['contract_start_date']. "</td>");
-			echo("<td>".$row['contract_end_date']. "</td>");
-			echo("<td>".$row['player_shirt_no']. "</td>");
-			echo("<td>".$row['status']. "</td>");
-			echo("</tr>");
+		$result = $m_db->Query("SELECT * FROM sbm_player WHERE team_id='".$teamid."'");
+		if ($result>=1){
+			echo("<table class=\"table table-striped\">");
+			echo("<thead><tr><th>Squad Member</th><th>Position</th><th>DOB</th><th>Contact From</th><th>Contract Till</th><th>Shirt Number</th><th>Status</th></thead>");
+			echo("<tbody>");
+			while ($row=$m_db->Fetch($result)){
+				echo("<tr>");
+				echo("<td>".$row['player_firstname']. " ". $row['player_lastname']. "</td>");
+				echo("<td>".$row['position']. "</td>");
+				echo("<td>".$row['player_dob']. "</td>");
+				echo("<td>".$row['contract_start_date']. "</td>");
+				echo("<td>".$row['contract_end_date']. "</td>");
+				echo("<td>".$row['player_shirt_no']. "</td>");
+				echo("<td>".$row['status']. "</td>");
+				echo("</tr>");
+			}
+		}
+		else{
+			echo("NO Team Members Found!!");
 		}
 	}
 
-	function teamCoach(){
+	function teamCoach($teamid){
 		global $m_db;
-		$result = $m_db->Query("SELECT CONCAT(firstname,lastname) AS fullname, nationality FROM sbm_team_coach WHERE team_id=".$this->id);
-		$row=$m_db->Fetch($result);
+		$result = $m_db->Query("SELECT CONCAT(firstname,lastname) AS fullname, nationality FROM sbm_team_coach WHERE team_id=".$teamid);
+		if ($result >= 1){
+			$row=$m_db->Fetch($result);
 		echo("Coach Name:<b>".$row['fullname']."</b>&nbsp;&nbsp;&nbsp;&nbsp;Nationality:<b>". $row['nationality']."</b>");
+		}
+		else{
+			echo("Coach Information Not Found!!");
+		}
+		
 	}
 
 
@@ -105,7 +118,7 @@ class team
 								sbm_team_standing as ts 
 								WHERE ts.team_id = ".$this->id);
 
-		echo("<table class=\"table table-striped\">");
+		echo("<table class=\"table table-bordered\">");
 		echo("<thead><tr><th>POS</th><th data-container=\"body\" data-toggle=\"tooltip\" title=\"PLAYED\">P</th><th data-container=\"body\" data-toggle=\"tooltip\" title=\"WIN\">W</th><th data-container=\"body\" data-toggle=\"tooltip\" title=\"DRAW\">D</th><th data-container=\"body\" data-toggle=\"tooltip\" title=\"LOST\">L</th><th data-container=\"body\" data-toggle=\"tooltip\" title=\"GOAL DIFFERENCE\">GD</th><th data-container=\"body\" data-toggle=\"tooltip\" title=\"POINTS\">Pts</th></thead>");
 		echo("<tbody>");
 		while ($row=$m_db->Fetch($result)){
@@ -125,12 +138,33 @@ class team
 	function teamName(){
 		global $m_db;
 		$result = $m_db->Query("SELECT team_fullname FROM sbm_team WHERE team_id=".$this->id);
-		$row=$m_db->Fetch($result);
-		echo($row['team_fullname']);
+		if ($result >= 1){
+			$row=$m_db->Fetch($result);
+			echo($row['team_fullname']);
+		}
+
 	}
 
-	function teamLastResults(){
-
+	function teamLastResults($teamid){
+		global $m_db;
+  		// $oTeam->teamLastResults($_GET['teamid']);
+  		$result = $m_db->Query("CALL return_current_form('".$teamid."')");
+  		if ($result >= 1){
+  			echo("<table class=\"table table-bordered\">");
+			echo("<thead><tr>Last Six Results</tr></thead>");
+			echo("<tbody>");
+			while($row = $m_db->Fetch($result)){
+				echo("<tr>");
+				echo("<td>".$row['fixture_date']. "</td>");
+				echo("<td>".$row['home_team']. " VS ".$row['away_team']."</td>");
+				echo("<td>".$row['goal_score']. "-".$row['goal_concede']."</td>");
+				echo("<td>".$row['result']. "</td></tr>");
+			}
+			echo("</tbody></table>");
+  		}
+  		else{
+  			echo("NO Last Six Results FOund For This Team!!!");
+  		}
 	}
 
 }

@@ -35,26 +35,21 @@
 							<div class="row">
 							  <div class="col-xs-6">
 							  		League Position
-							  		<?php
-							  		$oTeam->teamLeaguePosition();
-							  		?>
+							  		<?php $oTeam->teamLeaguePosition();	?>
 							  		<a href="index.php?page=team-position&leagueid=<?php echo($_GET['leagueid']); ?>">Full League Table</a>
 
-							  		Last Six Results
-							  		<?php
-							  		$oTeam->teamLastResults();
-							  		?>
+							  		<?php $oTeam->teamLastResults($_GET['teamid']); ?>
 							  		<a href="index.php?page=team-position&leagueid=<?php echo($_GET['leagueid']); ?>">View All Club Results</a>
 
 							  </div>
-							  <div class="col-xs-6">.col-xs-6</div>
+							  <div class="col-xs-6"><!-- .col-xs-6 --></div>
 							</div>
 						</div>
 				   </div>
 				   
 				   <div class = "tab-pane fade" id = "squad">
-						<div class="coach-info"><?php $oTeam->teamCoach();  ?></div>
-						<?php $oTeam->teamMembers();   ?>
+						<div class="coach-info"><?php $oTeam->teamCoach($_GET['teamid']);  ?></div>
+						<?php $oTeam->teamMembers($_GET['teamid']);   ?>
 				   </div>
 				  
 				</div>
