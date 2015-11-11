@@ -29,6 +29,9 @@ else {
         <script type="text/javascript" src="../js/framework/bootstrap.js"></script>
         <script type="text/javascript">$(function () { $("[data-toggle = 'tooltip']").tooltip(); });</script>
 
+        <!-- For datetime picker -->
+        <link href="css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-datetimepicker.min.css">
     </head>
 
     <body>
