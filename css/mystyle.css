@@ -70,3 +70,6 @@
 .coach-info{
 	padding: 20px 0px;
 }
+.user-info .btn-default{
+    margin-top: 9px !important;
+}
