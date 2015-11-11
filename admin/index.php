@@ -19,6 +19,10 @@ else {
 
         <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+        
+        <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap-datetimepicker.pt-BR.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="js/bootstrap-datetimepicker.min.css">
         <!--datepicker-->
 
         <link rel="stylesheet" href="../css/datepicker.css">
@@ -44,8 +48,8 @@ else {
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                     <div class="navbar-header">
-                                        <a class="navbar-brand" href="home.php">
-                                            <img alt="Soccer Betway Management" src="../images/logo.png"> <div class="site-name">Soccer Betway Management</div>
+                                        <a class="navbar-brand" href="index.php">
+                                            <img alt="Soccer Betway Management" src="../images/logo.png"> <div class="site-name">ADMIN-SBM</div>
                                         </a>
                                     </div>
                                 </div>
