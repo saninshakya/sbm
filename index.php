@@ -49,21 +49,32 @@ else {
                                 </div>
                                 <div class="col-xs-6 col-md-4">
                                     <div class="user-info">
-                                        <?php
-                                        if (isset($_SESSION['sbm_user']))
-                                            echo("Welcome " . $_SESSION['sbm_user']);
-                                        else
-                                            echo("Welcome Anonymous");
-                                        echo("&nbsp;&nbsp;&nbsp;&nbsp;");
-
-                                        if ((isset($_SESSION['sbm_user'])) && (isset($_SESSION['sbm_user_id']))) {
-                                            if ($_SESSION['chk'] == true) {
-                                                echo("<a href=\"index.php?page=logout\"><button type=\"button\" class=\"btn btn btn-primary btn-xs navbar-btn\">Logout</button></a>");
-                                            }
-                                        } else {
-                                            echo("<a href=\"index.php?page=login\"><button type=\"button\" class=\"btn btn btn-primary btn-xs navbar-btn\">Sign in</button></a>");
-                                        }
-                                        ?>
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <?php
+                                                if (isset($_SESSION['sbm_user']))
+                                                    echo("Welcome " . $_SESSION['sbm_user']);
+                                                else
+                                                    echo("Welcome Anonymous");
+                                                ?>
+                                                <span class = "caret"></span>
+                                            </button>
+                                            <ul class = "dropdown-menu" aria-labelledby = "dropdownMenu1">
+                                                <?php
+                                                if ((isset($_SESSION['sbm_user'])) && (isset($_SESSION['sbm_user_id']))) {
+                                                    if ($_SESSION['chk'] == true) {
+                                                        ?>
+                                                        <li> <?php echo("<a href=\"index.php?page=logout\">Logout</a>"); ?></li>
+                                                        <?php
+                                                    }
+                                                } else {
+                                                    ?>
+                                                    <li> <?php echo("<a href=\"index.php?page=login\">Sign in</a>"); ?></li>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
