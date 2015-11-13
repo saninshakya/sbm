@@ -11,12 +11,12 @@ if (isset($_POST['login']))
     {
         case 'SUCCESS':
             $_SESSION['success_message']="Login Successfully!";
-            echo ("<script type=\"text/javascript\">window.location=\"index.php\"</script>");
+            echo ("<script type=\"text/javascript\">window.location=\"home.php\"</script>");
             break;
                     
         case 'INVALID':
             $_SESSION['error_message']="Invalid Username / Password!";
-            echo ("<script type=\"text/javascript\">window.location=\"index.php?page=login\"</script>");
+            echo ("<script type=\"text/javascript\">window.location=\"home.php?page=login\"</script>");
             break;
             
         case 'FILL_THIS_FIELD':
@@ -28,7 +28,7 @@ if (isset($_POST['login']))
             
         default:
             $_SESSION['error_message']="Error occured while login!";
-            echo ("<script type=\"text/javascript\">window.location=\"index.php?page=login\"</script>");
+            echo ("<script type=\"text/javascript\">window.location=\"home.php?page=login\"</script>");
     }
 }
 

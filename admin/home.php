@@ -18,29 +18,24 @@ else {
         <link rel="stylesheet" href="../css/formValidation.css"/>
 
         <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-        
+        <script type="text/javascript" src="../js/bootstrap.min.js"></script> 
+        <!--datepicker-->
         <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
         <script type="text/javascript" src="js/bootstrap-datetimepicker.pt-BR.js"></script>
-        <link rel="stylesheet" type="text/css" media="screen" href="js/bootstrap-datetimepicker.min.css">
-        <!--datepicker-->
-
+        <!-- // <script src="../js/bootstrap-datepicker.js"></script> -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-datetimepicker.min.css">
         <link rel="stylesheet" href="../css/datepicker.css">
 
-            <script src="../js/bootstrap-datepicker.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+        <!-- For login and signin form -->
+        <link rel="shortcut icon" href="../images/favicon.png"/>
+        <script type="text/javascript" src="../js/formValidation.js"></script>
+        <script type="text/javascript" src="../js/framework/bootstrap.js"></script>
+        <script type="text/javascript">$(function() {
+                $("[data-toggle = 'tooltip']").tooltip();
+            });</script>
 
-
-            <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
-                <!-- For login and signin form -->
-
-                <link rel="shortcut icon" href="../images/favicon.png"/>
-                <script type="text/javascript" src="../js/formValidation.js"></script>
-                <script type="text/javascript" src="../js/framework/bootstrap.js"></script>
-                <script type="text/javascript">$(function() {
-                        $("[data-toggle = 'tooltip']").tooltip();
-                    });</script>
-
-                </head>
+    </head>
 
                 <body>
                     <nav class="navbar navbar-default">
@@ -48,7 +43,7 @@ else {
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                     <div class="navbar-header">
-                                        <a class="navbar-brand" href="index.php">
+                                        <a class="navbar-brand" href="home.php">
                                             <img alt="Soccer Betway Management" src="../images/logo.png"> <div class="site-name">ADMIN-SBM</div>
                                         </a>
                                     </div>
@@ -70,12 +65,12 @@ else {
                                                 if ((isset($_SESSION['sbm_adminuser'])) && (isset($_SESSION['sbm_adminuser_id']))) {
                                                     if ($_SESSION['chk'] == true) {
                                                         ?>
-                                                        <li> <?php echo("<a href=\"index.php?page=logout\">Logout</a>"); ?></li>
+                                                        <li> <?php echo("<a href=\"home.php?page=logout\">Logout</a>"); ?></li>
                                                         <?php
                                                     }
                                                 } else {
                                                     ?>
-                                                    <li> <?php echo("<a href=\"index.php?page=login\">Sign in</a>"); ?></li>
+                                                    <li> <?php echo("<a href=\"home.php?page=login\">Sign in</a>"); ?></li>
                                                     <?php
                                                 }
                                                 ?>
@@ -125,8 +120,8 @@ else {
                                         </div>
                                         <div class="navbar-collapse collapse sidebar-navbar-collapse">
                                             <ul class="nav nav-pills nav-stacked">
-                                                <li><a href="index.php?page=fixture">Fixture</a></li>
-                                                <li><a href="index.php?page=bidding">Bidding</a></li>
+                                                <li><a href="home.php?page=fixture">Fixture</a></li>
+                                                <li><a href="home.php?page=bidding">Bidding</a></li>
                                             </ul>
                                         </div><!--/.nav-collapse -->
                                     </div>

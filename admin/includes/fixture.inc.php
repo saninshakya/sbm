@@ -15,13 +15,13 @@ $oFixture=new fixture();
 if (($action=='new') || ($action=='edit'))
 	{
 ?>
-		<div class="cancel"><a href="index.php?page=fixture&action=cancel"><img src="images/cancel.png" alt="Cancel" title="cancel"/></a></div><!--end delete-->
+		<div class="cancel pull-right"><a href="home.php?page=fixture&action=cancel">Cancel</a></div><!--end delete-->
 <?php
 	}
 else
 	{
 ?>
-		<div class="new"><a href="index.php?page=fixture&action=new"><img src="images/new.png" alt="New" title="New category" /></a></div><!--end new-->
+		<div class="new pull-right"><a href="home.php?page=fixture&action=new">Add New Fixture</a></div><!--end new-->
 <?php
 	}
 ?>
@@ -55,19 +55,19 @@ if(isset($_SESSION['message'])) //If message is set then display the message
 				{
 					case 'SUCCESS':
 						$_SESSION['message']="Category deleted successfully!";
-						echo("<script>location.href='index.php?page=fixture'</script>");
+						echo("<script>location.href='home.php?page=fixture'</script>");
 						return;
 						break;
 						
 					case 'TRY_AGAIN':
 						$_SESSION['message']="Error occured while deleting. Try again.";
-						echo("<script>location.href='index.php?page=fixture'</script>");
+						echo("<script>location.href='home.php?page=fixture'</script>");
 						return;
 						break;
 						
 					default:
 						$_SESSION['message']="Error occured while deleting. Try again.";
-						echo("<script>location.href='index.php?page=fixture'</script>");
+						echo("<script>location.href='home.php?page=fixture'</script>");
 						return;
 				}							
 			break;

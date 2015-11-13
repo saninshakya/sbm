@@ -1,12 +1,50 @@
 <?php
 include("classes/league.class.php");
+if (isset($_POST['save']))
+{
+    $oFixture = new fixture();
+    $oFixture->datetime = $_POST['datetimepicker2'];
+    $oFixture->gameweek = $_POST['gameweek'];
+    $oFixture->league = $_POST['league'];
+    $oFixture->hometeam = $_POST['hometeam'];
+    $oFixture->awayteam = $_POST['awayteam'];
+    $oFixture->oddhome = $_POST['oddhome'];
+    $oFixture->odddraw = $_POST['odddraw'];
+    $oFixture->oddaway = $_POST['oddaway'];
+    switch($oFixture->insert_fixture())
+    {
+        case 'SUCCESS':
+            $_SESSION['success_message']="Fixture Added Successfully!";
+            echo ("<script type=\"text/javascript\">window.location=\"home.php\"</script>");
+            echo("done");
+            break;
+                    
+        case 'ERROR':
+            $_SESSION['error_message']="Error Occured. Please Try Again!";
+            echo ("<script type=\"text/javascript\">window.location=\"home.php?page=fixture\"</script>");
+            break;
+            
+        // case 'FILL_THIS_FIELD':
+        //     if ($oLogin->user=="")
+        //         $oForm->setError('username','Please Fill the Username');
+        //     elseif ($oLogin->pass=="")
+        //         $oForm->setError('password','Please Fill the Password');
+        //     break;
+            
+        default:
+            $_SESSION['error_message']="Error Occured. Please Try Again!";
+            echo ("<script type=\"text/javascript\">window.location=\"home.php?page=fixture\"</script>");
+    }
+}
+
+
 ?>
-    <form class="form-horizontal" method="post" action="<?php echo($_SERVER['PHP_SELF']."?page=login"); ?>">
+    <form class="form-horizontal" method="post" action="<?php echo($_SERVER['PHP_SELF']."?page=fixture&action=new"); ?>">
         <div class="form-group">
           <label for="fixture" class="col-xs-2 control-label">Date Time:</label>
             <div class="col-xs-6">
                       <div id="datetimepicker2" class="input-append">
-                      <input data-format="MM/dd/yyyy HH:mm:ss PP" type="text"></input>
+                      <input data-format="yyyy-MM-dd HH:mm:ss" type="text" name="datetimepicker2"></input>
                       <span class="add-on">
                         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                       </span>
@@ -15,7 +53,7 @@ include("classes/league.class.php");
                     $(function() {
                       $('#datetimepicker2').datetimepicker({
                         language: 'en',
-                        pick12HourFormat: true
+                        pick12HourFormat: false
                       });
                     });
                   </script>  
@@ -25,24 +63,24 @@ include("classes/league.class.php");
         <div class="form-group">
             <label for="gameweek" class="col-xs-2 control-label">GameWeek *</label>
             <div class="col-xs-9">
-                <select class="form-control" name="gameweek">
+                <select class="form-control" name="gameweek" id ="gameweek">
                   <option value="">-- Select GameWeek --</option>
                   <option value="Gameweek1">GameWeek 1</option>
                   <option value="Gameweek2">GameWeek 2</option>
                   <option value="Gameweek3">GameWeek 3</option>
                   <option value="Gameweek4">GameWeek 4</option>
                   <option value="Gameweek5">GameWeek 5</option>
-                  <option value="Gameweek6">GameWeek 5</option>
-                  <option value="Gameweek7">GameWeek 5</option>
-                  <option value="Gameweek8">GameWeek 5</option>
-                  <option value="Gameweek8">GameWeek 5</option>
-                  <option value="Gameweek10">GameWeek 5</option>
-                  <option value="Gameweek11">GameWeek 5</option>
-                  <option value="Gameweek12">GameWeek 5</option>
-                  <option value="Gameweek13">GameWeek 5</option>
-                  <option value="Gameweek14">GameWeek 5</option>
-                  <option value="Gameweek15">GameWeek 5</option>
-                  <option value="Gameweek16">GameWeek 5</option>
+                  <option value="Gameweek6">GameWeek 6</option>
+                  <option value="Gameweek7">GameWeek 7</option>
+                  <option value="Gameweek8">GameWeek 8</option>
+                  <option value="Gameweek8">GameWeek 9</option>
+                  <option value="Gameweek10">GameWeek 10</option>
+                  <option value="Gameweek11">GameWeek 11</option>
+                  <option value="Gameweek12">GameWeek 12</option>
+                  <option value="Gameweek13">GameWeek 13</option>
+                  <option value="Gameweek14">GameWeek 14</option>
+                  <option value="Gameweek15">GameWeek 15</option>
+                  <option value="Gameweek16">GameWeek 16</option>
                 </select>
                 <span class="error"><?php echo($oForm->Error("gameweek")); ?></span>
             </div>
@@ -67,19 +105,19 @@ include("classes/league.class.php");
         <div class="form-group">
             <label for="home" class="col-xs-2 control-label">Home Team *</label>
             <div class="col-xs-9">
-                <select class="form-control" name="home" id="hometeam">
+                <select class="form-control" name="hometeam" id="hometeam">
                   <option value="">-- Select Team --</option>
                 </select>
-                <span class="error"><?php echo($oForm->Error("home")); ?></span>
+                <span class="error"><?php echo($oForm->Error("hometeam")); ?></span>
             </div>
         </div>
         <div class="form-group">
             <label for="away" class="col-xs-2 control-label">Away Team *</label>
             <div class="col-xs-9">
-                <select class="form-control" name="away" id="awayteam">
+                <select class="form-control" name="awayteam" id="awayteam">
                   <option value="">-- Select Team --</option>
                 </select>
-                <span class="error"><?php echo($oForm->Error("away")); ?></span>
+                <span class="error"><?php echo($oForm->Error("awayteam")); ?></span>
             </div>
         </div>
         <div class="form-group">
@@ -108,9 +146,9 @@ include("classes/league.class.php");
         <div style="margin-top:10px" class="form-group">
             <!-- Button -->
 
-            <div class="col-sm-12 controls">
+            <div class="col-sm-11 controls">
               <!-- <a id="btn-login" href="#" class="btn btn-success">Login  </a> -->
-              <input type="submit" name="save" value="SAVE" class="btn btn-success" />
+              <input type="submit" name="save" value="SAVE" class="btn btn-success pull-right" />
               <!-- <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a> -->
 
             </div>

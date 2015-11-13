@@ -10,17 +10,17 @@
 		$gameWeek=$oFixture->getGameWeekList();
 	}
 	?>
-		<div class="gameweek-filter pull-right">
+		<!-- <div class="gameweek-filter pull-right">
 		    <div class="form-group">
 		      <label for="gameweek">GameWeek:</label>
 		      <select class="form-control" name="gameweek" id="gameweek" >
 		      	<?php
-			  	foreach($gameWeek as $x => $x_value) 
-			  		echo("<option value='".$x_value."'>".$x_value."</option>");
+			  	// foreach($gameWeek as $x => $x_value) 
+			  	// 	echo("<option value='".$x_value."'>".$x_value."</option>");
 			  	?>
 		      </select>
 		    </div>
-		</div>
+		</div> -->
 	<?php
 	 
 	// echo "Current week range from $this_week_sd to $this_week_ed ";

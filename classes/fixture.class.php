@@ -23,6 +23,27 @@ class fixture
 		$league = $m_db->Query("SELECT league_name FROM sbm_league WHERE league_id='".$this->leagueid."'");
 		$row=$m_db->Fetch($league);
 		echo("<div class=\"league-title\">".$row['league_name']."</div>");
+		// $result = $m_db->Query("SELECT DISTINCT f.fixture_id, 
+		// 										gf.fixture_id AS fixtureid,
+		// 										gf.game_week,
+		// 										gf.fixture_date,
+		// 										wo.weekly_odd_id,  
+		// 										wo.odd_home, 
+		// 										wo.odd_draw, 
+		// 										wo.odd_away,
+		// 						(SELECT team_fullname 
+		// 							FROM return_gameweek 
+		// 							WHERE fixture_id = gf.fixture_id AND home_team = 1 
+		// 						) AS home_team,
+		// 						(SELECT team_fullname 
+		// 							FROM return_gameweek 
+		// 							WHERE fixture_id = gf.fixture_id AND away_team = 1
+		// 						) AS away_team
+		// 						FROM sbm_fixture AS f
+		// 						LEFT JOIN return_gameweek  AS gf ON (f.fixture_id = gf.fixture_id)
+		// 						LEFT JOIN sbm_weekly_odd as wo ON (f.fixture_id=wo.fixture_id) 
+		// 						WHERE gf.fixture_date BETWEEN '".$this->week_sd."' AND '".$this->week_ed."'");
+
 		$result = $m_db->Query("SELECT DISTINCT f.fixture_id, 
 												gf.fixture_id AS fixtureid,
 												gf.game_week,
@@ -41,10 +62,7 @@ class fixture
 								) AS away_team
 								FROM sbm_fixture AS f
 								LEFT JOIN return_gameweek  AS gf ON (f.fixture_id = gf.fixture_id)
-								LEFT JOIN sbm_weekly_odd as wo ON (f.fixture_id=wo.fixture_id) 
-								WHERE gf.fixture_date BETWEEN '".$this->week_sd."' AND '".$this->week_ed."'");
-
-
+								LEFT JOIN sbm_weekly_odd as wo ON (f.fixture_id=wo.fixture_id) ORDER BY f.fixture_id DESC");
 		echo("<table class=\"table table-striped\">");
 		echo("<thead><tr><th>S.No</th><th>Game Week</th><th>Date</th><th>Home Team</th><th>Away Team</th><th>1</th><th>X</th><th>2</th></thead>");
 		echo("<tbody>");
@@ -63,6 +81,13 @@ class fixture
 				echo("<td><button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#myModal\">".$row['odd_away']."</button></td>");
 			}
 			else{ //case: Already Login
+				// To disable the past fixture
+				$now = new DateTime(null, new DateTimeZone('Asia/Bangkok'));
+				$date =  $now->format('Y-m-d H:i:s');
+				$class = "";
+				if ($row['fixture_date'] < $date)
+					$class = "disabled=\"disabled\""; 
+				// check if user has already bid 
 				$rslt = $m_db->Query("SELECT weekly_odd_id, user_id FROM sbm_user_weekly_bid WHERE weekly_odd_id = '".$row['weekly_odd_id']."' AND user_id = '".$_SESSION['sbm_user_id']."'");
 				if ($m_db->countRows($rslt) > 0){
 					echo("<td><button disabled=\"disabled\" type=\"button\" class=\"btn btn-info btn-sm\">".$row['odd_home']."</button></td>");
@@ -70,9 +95,9 @@ class fixture
 					echo("<td><button disabled=\"disabled\" type=\"button\" class=\"btn btn-info btn-sm\">".$row['odd_away']."</button></td>");
 				}
 				else{
-					echo("<td><button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#bid\"  data-weeklyoddid=\"".$row['weekly_odd_id']."\" data-odd=\"".$row['odd_home']."\">".$row['odd_home']."</button></td>");
-					echo("<td><button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#bid\"  data-weeklyoddid=\"".$row['weekly_odd_id']."\" data-odd=\"".$row['odd_draw']."\">".$row['odd_draw']."</button></td>");
-					echo("<td><button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#bid\"  data-weeklyoddid=\"".$row['weekly_odd_id']."\" data-odd=\"".$row['odd_away']."\">".$row['odd_away']."</button></td>");
+					echo("<td><button ".$class." type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#bid\"  data-weeklyoddid=\"".$row['weekly_odd_id']."\" data-odd=\"".$row['odd_home']."\">".$row['odd_home']."</button></td>");
+					echo("<td><button ".$class." type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#bid\"  data-weeklyoddid=\"".$row['weekly_odd_id']."\" data-odd=\"".$row['odd_draw']."\">".$row['odd_draw']."</button></td>");
+					echo("<td><button ".$class." type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#bid\"  data-weeklyoddid=\"".$row['weekly_odd_id']."\" data-odd=\"".$row['odd_away']."\">".$row['odd_away']."</button></td>");
 				}
 			}
 			

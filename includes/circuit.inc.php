@@ -36,6 +36,10 @@ switch ($page)
 	case 'bid':
 		include("includes/bid.inc.php");
 		break;
+
+	case 'yourbid':
+		include("includes/yourbid.inc.php");
+		break;
 	
 	default:
 		include("includes/main.inc.php");

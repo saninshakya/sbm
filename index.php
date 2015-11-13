@@ -78,6 +78,14 @@ else {
                                             </ul>
                                         </div>
                                     </div>
+                                    <div class="user-bid">
+                                        <button class="btn btn-default">
+                                        <?php
+                                        if (isset($_SESSION['sbm_user']))
+                                            echo("<a href=\"index.php?page=yourbid\">Your BID</a>");
+                                        ?>
+                                    </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

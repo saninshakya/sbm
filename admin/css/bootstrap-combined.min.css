@@ -1967,7 +1967,10 @@ table td[class*="span"],table th[class*="span"],.row-fluid table td[class*="span
 }
 
 .icon-time {
-  background-image: url("../images/time.png");
+  height:30px;
+  width:100%;
+  background-color: pink;
+  /*background-image: url("../images/time.png");*/
   /*background-position: -48px -24px;*/
 }
 

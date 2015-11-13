@@ -20,6 +20,11 @@
 .user-info{
 	float:right;
 }
+.user-bid{
+	float:right;
+	margin-top: 10px;
+	margin-right: 5px;
+}
 
 .navbar-brand > img {
 	margin-top:-15px;
@@ -72,4 +77,13 @@
 }
 .user-info .btn-default{
     margin-top: 9px !important;
+}
+
+.win-no{
+	color: red;
+}
+
+.win-yes{
+	color: green;
+	font-weight: bold;
 }

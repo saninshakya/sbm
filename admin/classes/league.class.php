@@ -17,7 +17,7 @@ class league {
         while ($row = $m_db->Fetch($rslt)) {
             $key = $row['league_id'];
             $value = $row['league_name'];
-            $league_list[$key] = $value;
+            $league_list[$key] = [$value];
             // array_push($league_list[$key],$value);
         }
         return $league_list;

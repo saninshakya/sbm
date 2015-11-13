@@ -6,8 +6,8 @@ database.class.php
 config.php
 table_mystyle.css
 */
-class fixture
-{
+
+class fixture {
 
 	/////////////////////////////////////////////
 	//For displaying list of units added in table
@@ -34,7 +34,7 @@ class fixture
 								) AS away_team
 								FROM sbm_fixture AS f
 								LEFT JOIN return_gameweek  AS gf ON (f.fixture_id = gf.fixture_id)
-								LEFT JOIN sbm_weekly_odd as wo ON (f.fixture_id=wo.fixture_id)");
+								LEFT JOIN sbm_weekly_odd as wo ON (f.fixture_id=wo.fixture_id) ORDER BY f.fixture_id DESC");
 
 
 		echo("<table class=\"table table-striped\">");
@@ -58,6 +58,29 @@ class fixture
 			$counter++;
 		}
 		echo("</tbody></table>");
+	}
+
+
+
+	/////////////////////////////////////////////
+	//For adding fixture
+	/////////////////////////////////////////////
+	function insert_fixture() {
+		global $m_db;
+		$rslt = $m_db->Query("INSERT INTO sbm_fixture (game_week, fixture_date, league_id) VALUES ('".$this->gameweek."' , '".$this->datetime."' , '".$this->league."')");
+		if ($rslt > 0){
+			$fixtureid =  mysql_insert_id();
+			$rslthometeam = $m_db->Query("INSERT INTO sbm_team_fixture (team_id, fixture_id, home_team, away_team) VALUES ('".$this->hometeam."' , '".$fixtureid."' , '1', '0')");
+			$rsltawayteam = $m_db->Query("INSERT INTO sbm_team_fixture (team_id, fixture_id, home_team, away_team) VALUES ('".$this->awayteam."' , '".$fixtureid."' , '0', '1')");
+
+			$rsltweeklyodd = $m_db->Query("INSERT INTO sbm_weekly_odd (odd_home, odd_away, odd_draw, fixture_id) VALUES ('".$this->oddhome."' , '".$this->oddaway."' , '".$this->odddraw."' , '".$fixtureid."')");
+
+			return "SUCCESS";
+		}
+		else
+			return "ERROR";
+
+
 	}
 
 }
