@@ -90,6 +90,7 @@ else {
                                 echo("</div>");
                             }
 
+<<<<<<< HEAD
                             if (isset($_SESSION['error_message'])) { //If message is set then display the message
                                 echo("<div class=\"error_message\">");
                                 echo($_SESSION['error_message']);
@@ -124,6 +125,35 @@ else {
                                                     <li><a href="home.php?page=bidding">Bidding</a></li>
                                                 </ul>
                                             </div><!--/.nav-collapse -->
+=======
+                        if (isset($_SESSION['error_message'])) { //If message is set then display the message
+                            echo("<div class=\"error_message\">");
+                            echo($_SESSION['error_message']);
+                            unset($_SESSION['error_message']);
+                            echo("</div>");
+                        }
+                        ?>
+                    </div><!--end container-->  
+                    <?php
+                    if ((!isset($_SESSION['sbm_adminuser'])) && (!isset($_SESSION['sbm_adminuser_id']))) {
+                        // if (isset($_SESSION['chk']) == true) {
+                            include("includes/login.inc.php");
+                        // }
+                    } else {
+                        ?>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="sidebar-nav">
+                                    <div class="navbar navbar-default" role="navigation">
+                                        <div class="navbar-header">
+                                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                                                <span class="sr-only">Toggle navigation</span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                            </button>
+                                            <!-- <span class="visible-xs navbar-brand">Sidebar menu</span> -->
+>>>>>>> 7870f1c8c3baa5b9bb82d996e713ed52f01bfecc
                                         </div>
                                     </div>
                                 </div>

@@ -12,7 +12,7 @@ $oFixture=new fixture();
 	<div class="col-xs-12 col-sm-6 col-md-8 title">Fixture</div>
 	<div class="col-xs-6 col-md-4 icons">
 <?php
-if (($action=='new') || ($action=='edit'))
+if (($action=='new') || ($action=='result'))
 	{
 ?>
 		<div class="cancel pull-right"><a href="home.php?page=fixture&action=cancel">Cancel</a></div><!--end delete-->
@@ -73,8 +73,8 @@ if(isset($_SESSION['message'])) //If message is set then display the message
 			break;
 		//end delete case
 		
-		case 'edit':
-			include("fixture_edit.inc.php");
+		case 'result':
+			include("fixture_result.inc.php");
 			break;
 		// end edit case
 		
