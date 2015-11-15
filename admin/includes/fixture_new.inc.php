@@ -15,8 +15,7 @@ if (isset($_POST['save']))
     {
         case 'SUCCESS':
             $_SESSION['success_message']="Fixture Added Successfully!";
-            echo ("<script type=\"text/javascript\">window.location=\"home.php\"</script>");
-            echo("done");
+            echo ("<script type=\"text/javascript\">window.location=\"home.php?page=fixture\"</script>");
             break;
                     
         case 'ERROR':

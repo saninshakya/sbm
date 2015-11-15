@@ -100,9 +100,9 @@ else {
                     </div><!--end container-->  
                     <?php
                     if ((!isset($_SESSION['sbm_adminuser'])) && (!isset($_SESSION['sbm_adminuser_id']))) {
-                        if (!isset($_SESSION['chk'])) {
+                        // if (isset($_SESSION['chk']) == true) {
                             include("includes/login.inc.php");
-                        }
+                        // }
                     } else {
                         ?>
                         <div class="row">
