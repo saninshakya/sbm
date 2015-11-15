@@ -24,117 +24,117 @@ else {
         <script type="text/javascript" src="js/bootstrap-datetimepicker.pt-BR.js"></script>
         <!-- // <script src="../js/bootstrap-datepicker.js"></script> -->
         <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-datetimepicker.min.css">
-        <link rel="stylesheet" href="../css/datepicker.css">
+            <link rel="stylesheet" href="../css/datepicker.css">
 
-        <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
-        <!-- For login and signin form -->
-        <link rel="shortcut icon" href="../images/favicon.png"/>
-        <script type="text/javascript" src="../js/formValidation.js"></script>
-        <script type="text/javascript" src="../js/framework/bootstrap.js"></script>
-        <script type="text/javascript">$(function() {
-                $("[data-toggle = 'tooltip']").tooltip();
-            });</script>
+                <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+                    <!-- For login and signin form -->
+                    <link rel="shortcut icon" href="../images/favicon.png"/>
+                    <script type="text/javascript" src="../js/formValidation.js"></script>
+                    <script type="text/javascript" src="../js/framework/bootstrap.js"></script>
+                    <script type="text/javascript">$(function() {
+                            $("[data-toggle = 'tooltip']").tooltip();
+                        });</script>
 
-    </head>
+                    </head>
 
-                <body>
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                    <div class="navbar-header">
-                                        <a class="navbar-brand" href="home.php">
-                                            <img alt="Soccer Betway Management" src="../images/logo.png"> <div class="site-name">ADMIN-SBM</div>
-                                        </a>
+                    <body>
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-8">
+                                        <div class="navbar-header">
+                                            <a class="navbar-brand" href="home.php">
+                                                <img alt="Soccer Betway Management" src="../images/logo.png"> <div class="site-name">ADMIN-SBM</div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-6 col-md-4">
-                                    <div class="user-info">
-                                        <div class="dropdown">
-                                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <?php
-                                                if (isset($_SESSION['sbm_adminuser']))
-                                                    echo("Welcome " . $_SESSION['sbm_adminuser']);
-                                                else
-                                                    echo("Welcome Anonymous");
-                                                ?>
-                                                <span class = "caret"></span>
-                                            </button>
-                                            <ul class = "dropdown-menu" aria-labelledby = "dropdownMenu1">
-                                                <?php
-                                                if ((isset($_SESSION['sbm_adminuser'])) && (isset($_SESSION['sbm_adminuser_id']))) {
-                                                    if ($_SESSION['chk'] == true) {
+                                    <div class="col-xs-6 col-md-4">
+                                        <div class="user-info">
+                                            <div class="dropdown">
+                                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    <?php
+                                                    if (isset($_SESSION['sbm_adminuser']))
+                                                        echo("Welcome " . $_SESSION['sbm_adminuser']);
+                                                    else
+                                                        echo("Welcome Anonymous");
+                                                    ?>
+                                                    <span class = "caret"></span>
+                                                </button>
+                                                <ul class = "dropdown-menu" aria-labelledby = "dropdownMenu1">
+                                                    <?php
+                                                    if ((isset($_SESSION['sbm_adminuser'])) && (isset($_SESSION['sbm_adminuser_id']))) {
+                                                        if ($_SESSION['chk'] == true) {
+                                                            ?>
+                                                            <li> <?php echo("<a href=\"home.php?page=logout\">Logout</a>"); ?></li>
+                                                            <?php
+                                                        }
+                                                    } else {
                                                         ?>
-                                                        <li> <?php echo("<a href=\"home.php?page=logout\">Logout</a>"); ?></li>
+                                                        <li> <?php echo("<a href=\"home.php?page=login\">Sign in</a>"); ?></li>
                                                         <?php
                                                     }
-                                                } else {
                                                     ?>
-                                                    <li> <?php echo("<a href=\"home.php?page=login\">Sign in</a>"); ?></li>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </ul>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </nav>
-                    <div id="container-fluid">
-                        <?php
-                        if (isset($_SESSION['success_message'])) { //If message is set then display the message
-                            echo("<div class=\"success_message\">");
-                            echo($_SESSION['success_message']);
-                            unset($_SESSION['success_message']);
-                            echo("</div>");
-                        }
+                        </nav>
+                        <div id="container-fluid">
+                            <?php
+                            if (isset($_SESSION['success_message'])) { //If message is set then display the message
+                                echo("<div class=\"success_message\">");
+                                echo($_SESSION['success_message']);
+                                unset($_SESSION['success_message']);
+                                echo("</div>");
+                            }
 
-                        if (isset($_SESSION['error_message'])) { //If message is set then display the message
-                            echo("<div class=\"error_message\">");
-                            echo($_SESSION['error_message']);
-                            unset($_SESSION['error_message']);
-                            echo("</div>");
-                        }
-                        ?>
-                    </div><!--end container-->  
-                    <?php
-                    if ((!isset($_SESSION['sbm_adminuser'])) && (!isset($_SESSION['sbm_adminuser_id']))) {
-                        if (!isset($_SESSION['chk'])) {
-                            include("includes/login.inc.php");
-                        }
-                    } else {
-                        ?>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="sidebar-nav">
-                                    <div class="navbar navbar-default" role="navigation">
-                                        <div class="navbar-header">
-                                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-                                                <span class="sr-only">Toggle navigation</span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                            </button>
-                                            <!-- <span class="visible-xs navbar-brand">Sidebar menu</span> -->
+                            if (isset($_SESSION['error_message'])) { //If message is set then display the message
+                                echo("<div class=\"error_message\">");
+                                echo($_SESSION['error_message']);
+                                unset($_SESSION['error_message']);
+                                echo("</div>");
+                            }
+                            ?>
+                        </div><!--end container-->  
+                        <?php
+                        if ((!isset($_SESSION['sbm_adminuser'])) && (!isset($_SESSION['sbm_adminuser_id']))) {
+                            if (!isset($_SESSION['chk'])) {
+                                include("includes/login.inc.php");
+                            }
+                        } else {
+                            ?>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="sidebar-nav">
+                                        <div class="navbar navbar-default" role="navigation">
+                                            <div class="navbar-header">
+                                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                                                    <span class="sr-only">Toggle navigation</span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                </button>
+                                                <!-- <span class="visible-xs navbar-brand">Sidebar menu</span> -->
+                                            </div>
+                                            <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                                                <ul class="nav nav-pills nav-stacked">
+                                                    <li><a href="home.php?page=fixture">Fixture</a></li>
+                                                    <li><a href="home.php?page=bidding">Bidding</a></li>
+                                                </ul>
+                                            </div><!--/.nav-collapse -->
                                         </div>
-                                        <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                                            <ul class="nav nav-pills nav-stacked">
-                                                <li><a href="home.php?page=fixture">Fixture</a></li>
-                                                <li><a href="home.php?page=bidding">Bidding</a></li>
-                                            </ul>
-                                        </div><!--/.nav-collapse -->
                                     </div>
                                 </div>
+                                <div class="col-sm-9">
+                                    <?php include("includes/circuit.inc.php"); ?>
+                                </div>
                             </div>
-                            <div class="col-sm-9">
-                                <?php include("includes/circuit.inc.php"); ?>
-                            </div>
-                        </div>
 
-                        <?php
-                    }
-                    ?>        
+                            <?php
+                        }
+                        ?>        
 
-                </body>
-                </html>
+                    </body>
+                    </html>
