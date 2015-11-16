@@ -95,9 +95,9 @@ class fixture
 					echo("<td><button disabled=\"disabled\" type=\"button\" class=\"btn btn-info btn-sm\">".$row['odd_away']."</button></td>");
 				}
 				else{
-					echo("<td><button ".$class." type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#bid\"  data-weeklyoddid=\"".$row['weekly_odd_id']."\" data-odd=\"".$row['odd_home']."\">".$row['odd_home']."</button></td>");
-					echo("<td><button ".$class." type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#bid\"  data-weeklyoddid=\"".$row['weekly_odd_id']."\" data-odd=\"".$row['odd_draw']."\">".$row['odd_draw']."</button></td>");
-					echo("<td><button ".$class." type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#bid\"  data-weeklyoddid=\"".$row['weekly_odd_id']."\" data-odd=\"".$row['odd_away']."\">".$row['odd_away']."</button></td>");
+					echo("<td><button ".$class." type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#bid\"  data-weeklyoddid=\"".$row['weekly_odd_id']."\" data-odd=\"oh\">".$row['odd_home']."</button></td>");
+					echo("<td><button ".$class." type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#bid\"  data-weeklyoddid=\"".$row['weekly_odd_id']."\" data-odd=\"od\">".$row['odd_draw']."</button></td>");
+					echo("<td><button ".$class." type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#bid\"  data-weeklyoddid=\"".$row['weekly_odd_id']."\" data-odd=\"oa\">".$row['odd_away']."</button></td>");
 				}
 			}
 			

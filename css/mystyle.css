@@ -87,3 +87,9 @@
 	color: green;
 	font-weight: bold;
 }
+
+.result-wait{
+	font-size: 10px;
+	color: green;
+	font-weight: normal;
+}
