@@ -24,7 +24,7 @@ class league
 					      ON l.organization_id=o.organization_id
 						WHERE o.country_name = '".$this->country."'");
 
-		echo("<table class=\"table table-striped\">");
+		echo("<div class=\"col-sm-9\"><table class=\"table table-striped\">");
 		echo("<thead><tr><th>S.No</th><th>League</th><th>Organization</th><th>Country</th></tr></thead>");
 		echo("<tbody>");
 		while ($row=$m_db->Fetch($result))
@@ -37,7 +37,7 @@ class league
 			echo("</tr>");
 			$counter++;
 		}
-		echo("</tbody></table>");
+		echo("</tbody></table></div>");
 	}
 
 	function leagueName(){

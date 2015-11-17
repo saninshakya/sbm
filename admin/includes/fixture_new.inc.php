@@ -93,8 +93,8 @@ if (isset($_POST['save']))
                   $oLeague = new league();
                   $league = $oLeague->leagueName();
                   foreach($league as $key => $values) 
-                    foreach($values as $value)
-                      echo("<option value='".$key."'>".$value."</option>");
+                    // foreach($values as $value)
+                      echo("<option value='".$key."'>".$values."</option>");
                     
                   ?>
                 </select>

@@ -10,7 +10,7 @@ switch ($page)
 		break;
 
 	case 'bidding':
-		include("includes/biding.inc.php");
+		include("includes/bidding.inc.php");
 		break;
 
 	default:

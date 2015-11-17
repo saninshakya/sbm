@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Bree Serif", serif, "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
 }
 
@@ -35,14 +35,14 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../../../images/intro-bg.jpg) no-repeat center center;
+    background: url(../images/intro-bg.jpg) no-repeat center center;
     background-size: cover;
 }
 
 .intro-message {
     position: relative;
-    padding-top: 20%;
-    padding-bottom: 20%;
+    padding-top: 8%;
+    padding-bottom: 10%;
 }
 
 .intro-message > h1 {
@@ -116,8 +116,6 @@ h6 {
 .banner {
     padding: 100px 0;
     color: #f8f8f8;
-    background: url(../img/banner-bg.png) no-repeat center center;
-    background-size: cover;
 }
 
 .banner h2 {
@@ -167,4 +165,18 @@ footer {
 
 p.copyright {
     margin: 15px 0 0;
+}
+
+.logo{
+    margin:0px auto;
+    height:60px;
+    width: 60px;
+    background: url(../images/logo.png) no-repeat center center;
+    background-size: cover;
+}
+
+.company-name{
+    font-family: "Bree serif", serif;
+    font-size: 40px;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }

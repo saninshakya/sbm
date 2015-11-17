@@ -15,7 +15,7 @@
         <link rel="shortcut icon" href="images/favicon.png"/>
 
         <!-- Custom CSS -->
-        <link href="css/bootstrap/css/landing-page.css" rel="stylesheet">
+        <link href="css/landing-page.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,16 +36,16 @@
     <body>
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+    <!--     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
             <div class="container topnav">
-                <!-- Brand and toggle get grouped for better mobile display -->
+                Brand and toggle get grouped for better mobile display
                 <div class="navbar-header">
                     <a class="navbar-brand topnav" href="#">Soccer Betway Management</a>
                 </div>
 
-            </div>
+            </div> -->
             <!-- /.container -->
-        </nav>
+        <!-- </nav> -->
         <!-- Header -->
         <a name="about"></a>
         <div class="intro-header">
@@ -53,9 +53,11 @@
 
                 <div class="row">
                     <div class="col-lg-12">
+                            <div class="logo"></div>
+                            <div class="company-name">SOCCER BETWAY MANAGEMENT</div>
                         <div class="intro-message">
-                            <h1>Get a £30 Free Bet </h1>
-                            <h3>when you register with us today</h3>
+                            <h1>Join with Us for Free </h1>
+                            <h3>Register NOW</h3>
                             <hr class="intro-divider">
                             <ul class="list-inline intro-social-buttons">
                                 <li>

@@ -12,19 +12,16 @@ else {
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Soccer Betway Management</title>
+        <link rel="stylesheet" type="text/css" href="css/adminstyle.css" />
         <link rel="stylesheet" type="text/css" href="../css/mystyle.css" />
         <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.css" />
-
-        <link rel="stylesheet" href="../css/formValidation.css"/>
 
         <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="../js/bootstrap.min.js"></script> 
         <!--datepicker-->
         <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
         <script type="text/javascript" src="js/bootstrap-datetimepicker.pt-BR.js"></script>
-        <!-- // <script src="../js/bootstrap-datepicker.js"></script> -->
         <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-datetimepicker.min.css">
-        <link rel="stylesheet" href="../css/datepicker.css">
 
         <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
         <!-- For login and signin form -->
@@ -81,22 +78,7 @@ else {
                             </div>
                         </div>
                     </nav>
-                    <div id="container-fluid">
-                        <?php
-                        if (isset($_SESSION['success_message'])) { //If message is set then display the message
-                            echo("<div class=\"success_message\">");
-                            echo($_SESSION['success_message']);
-                            unset($_SESSION['success_message']);
-                            echo("</div>");
-                        }
-                        if (isset($_SESSION['error_message'])) { //If message is set then display the message
-                            echo("<div class=\"error_message\">");
-                            echo($_SESSION['error_message']);
-                            unset($_SESSION['error_message']);
-                            echo("</div>");
-                        }
-                        ?>
-                    </div><!--end container-->  
+                    
                     <?php
                     if ((!isset($_SESSION['sbm_adminuser'])) && (!isset($_SESSION['sbm_adminuser_id']))) {
                         // if (isset($_SESSION['chk']) == true) {
@@ -104,30 +86,51 @@ else {
                         // }
                     } else {
                         ?>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="sidebar-nav">
-                                    <div class="navbar navbar-default" role="navigation">
-                                        <div class="navbar-header">
-                                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-                                                <span class="sr-only">Toggle navigation</span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                            </button>
-                                            <!-- <span class="visible-xs navbar-brand">Sidebar menu</span> -->
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="sidebar-nav">
+                                        <div class="navbar navbar-default" role="navigation">
+                                            <div class="navbar-header">
+                                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                                                    <span class="sr-only">Toggle navigation</span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                </button>
+                                                <!-- <span class="visible-xs navbar-brand">Sidebar menu</span> -->
+                                            </div>
+                                            <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                                                <ul class="nav nav-pills nav-stacked">
+                                                    <li><a href="home.php?page=fixture">Fixture</a></li>
+                                                    <li><a href="home.php?page=bidding">Weekly Odd Bid</a></li>
+                                                    <li><a href="#">Correct Score Bid</a></li>
+                                                    <li><a href="#">Team</a></li>
+                                                    <li><a href="#">Organization</a></li>
+                                                    <li><a href="#">Players</a></li>
+                                                    <li><a href="#">Users</a></li>
+                                                </ul>
+                                            </div><!--/.nav-collapse -->
                                         </div>
-                                        <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                                            <ul class="nav nav-pills nav-stacked">
-                                                <li><a href="home.php?page=fixture">Fixture</a></li>
-                                                <li><a href="home.php?page=bidding">Bidding</a></li>
-                                            </ul>
-                                        </div><!--/.nav-collapse -->
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-9">
-                                <?php include("includes/circuit.inc.php"); ?>
+                                <div class="col-sm-9">
+                                    <?php
+                                    if (isset($_SESSION['success_message'])) { //If message is set then display the message
+                                        echo("<div class=\"success_message\">");
+                                        echo($_SESSION['success_message']);
+                                        unset($_SESSION['success_message']);
+                                        echo("</div>");
+                                    }
+                                    if (isset($_SESSION['error_message'])) { //If message is set then display the message
+                                        echo("<div class=\"error_message\">");
+                                        echo($_SESSION['error_message']);
+                                        unset($_SESSION['error_message']);
+                                        echo("</div>");
+                                    }
+                                    ?>
+                                    <?php include("includes/circuit.inc.php"); ?>
+                                </div>
                             </div>
                         </div>
 

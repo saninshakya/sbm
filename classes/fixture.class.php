@@ -23,27 +23,6 @@ class fixture
 		$league = $m_db->Query("SELECT league_name FROM sbm_league WHERE league_id='".$this->leagueid."'");
 		$row=$m_db->Fetch($league);
 		echo("<div class=\"league-title\">".$row['league_name']."</div>");
-		// $result = $m_db->Query("SELECT DISTINCT f.fixture_id, 
-		// 										gf.fixture_id AS fixtureid,
-		// 										gf.game_week,
-		// 										gf.fixture_date,
-		// 										wo.weekly_odd_id,  
-		// 										wo.odd_home, 
-		// 										wo.odd_draw, 
-		// 										wo.odd_away,
-		// 						(SELECT team_fullname 
-		// 							FROM return_gameweek 
-		// 							WHERE fixture_id = gf.fixture_id AND home_team = 1 
-		// 						) AS home_team,
-		// 						(SELECT team_fullname 
-		// 							FROM return_gameweek 
-		// 							WHERE fixture_id = gf.fixture_id AND away_team = 1
-		// 						) AS away_team
-		// 						FROM sbm_fixture AS f
-		// 						LEFT JOIN return_gameweek  AS gf ON (f.fixture_id = gf.fixture_id)
-		// 						LEFT JOIN sbm_weekly_odd as wo ON (f.fixture_id=wo.fixture_id) 
-		// 						WHERE gf.fixture_date BETWEEN '".$this->week_sd."' AND '".$this->week_ed."'");
-
 		$result = $m_db->Query("SELECT DISTINCT f.fixture_id, 
 												gf.fixture_id AS fixtureid,
 												gf.game_week,
@@ -62,7 +41,8 @@ class fixture
 								) AS away_team
 								FROM sbm_fixture AS f
 								LEFT JOIN return_gameweek  AS gf ON (f.fixture_id = gf.fixture_id)
-								LEFT JOIN sbm_weekly_odd as wo ON (f.fixture_id=wo.fixture_id) ORDER BY f.fixture_id DESC");
+								LEFT JOIN sbm_weekly_odd as wo ON (f.fixture_id=wo.fixture_id)
+								WHERE f.league_id ='". $this->leagueid ."' ORDER BY f.fixture_id DESC");
 		echo("<table class=\"table table-striped\">");
 		echo("<thead><tr><th>S.No</th><th>Game Week</th><th>Date</th><th>Home Team</th><th>Away Team</th><th>1</th><th>X</th><th>2</th></thead>");
 		echo("<tbody>");

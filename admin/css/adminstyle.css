@@ -1,4 +1,8 @@
 /* make sidebar nav vertical */ 
+.table{
+  font-size: 11px !important;
+}
+
 @media (min-width: 768px) {
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
@@ -13,10 +17,12 @@
   .sidebar-nav .navbar li {
     float: none;
     display: block;
+    border-bottom: 1px solid #dddddd;
   }
   .sidebar-nav .navbar li a {
     padding-top: 12px;
     padding-bottom: 12px;
+    text-align: center;
   }
 }
 
@@ -34,5 +40,19 @@
 .title{
   font-family: 'Bree serif', serif;
   font-size: 24px;
+  margin-bottom: 20px;
+  color:#0083DF;
+  margin-left: -15px;
 }
 
+.submenu{
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
