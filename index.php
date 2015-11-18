@@ -13,6 +13,7 @@ else {
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Soccer Betway Management</title>
         <link rel="stylesheet" type="text/css" href="css/mystyle.css" />
+        <link rel="stylesheet" type="text/css" href="admin/css/adminstyle.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css" />
         <link rel="stylesheet" href="css/formValidation.css"/>
 

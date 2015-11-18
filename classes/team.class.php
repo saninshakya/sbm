@@ -72,9 +72,9 @@ class team
 	}
 
 
-	function teamMembers($teamid){
+	function teamMembers(){
 		global $m_db;
-		$result = $m_db->Query("SELECT * FROM sbm_player WHERE team_id='".$teamid."'");
+		$result = $m_db->Query("SELECT * FROM sbm_player WHERE team_id='".$this->teamid."'");
 		if ($result>=1){
 			echo("<table class=\"table table-striped\">");
 			echo("<thead><tr><th>Squad Member</th><th>Position</th><th>DOB</th><th>Contact From</th><th>Contract Till</th><th>Shirt Number</th><th>Status</th></thead>");
@@ -94,14 +94,15 @@ class team
 		else{
 			echo("NO Team Members Found!!");
 		}
+		echo("</tbody></table>");
 	}
 
-	function teamCoach($teamid){
+	function teamCoach(){
 		global $m_db;
-		$result = $m_db->Query("SELECT CONCAT(firstname,lastname) AS fullname, nationality FROM sbm_team_coach WHERE team_id=".$teamid);
-		if ($result >= 1){
-			$row=$m_db->Fetch($result);
-		echo("Coach Name:<b>".$row['fullname']."</b>&nbsp;&nbsp;&nbsp;&nbsp;Nationality:<b>". $row['nationality']."</b>");
+		$rslt = $m_db->Query("SELECT CONCAT(firstname, lastname) AS fullname, nationality FROM sbm_team_coach WHERE team_id=".$this->teamid);
+		if ($rslt > 0){
+			$row = $m_db->Fetch($rslt);
+			echo("Coach Name:<b>".$row['fullname']."</b>&nbsp;&nbsp;&nbsp;&nbsp;Nationality:<b>". $row['nationality']."</b>");
 		}
 		else{
 			echo("Coach Information Not Found!!");
@@ -116,7 +117,7 @@ class team
 								*, ts.total_goal_score - ts.total_goal_concede AS GD
 								FROM 
 								sbm_team_standing as ts 
-								WHERE ts.team_id = ".$this->id);
+								WHERE ts.team_id = ".$this->teamid);
 
 		echo("<table class=\"table table-bordered\">");
 		echo("<thead><tr><th>POS</th><th data-container=\"body\" data-toggle=\"tooltip\" title=\"PLAYED\">P</th><th data-container=\"body\" data-toggle=\"tooltip\" title=\"WIN\">W</th><th data-container=\"body\" data-toggle=\"tooltip\" title=\"DRAW\">D</th><th data-container=\"body\" data-toggle=\"tooltip\" title=\"LOST\">L</th><th data-container=\"body\" data-toggle=\"tooltip\" title=\"GOAL DIFFERENCE\">GD</th><th data-container=\"body\" data-toggle=\"tooltip\" title=\"POINTS\">Pts</th></thead>");
@@ -137,18 +138,18 @@ class team
 
 	function teamName(){
 		global $m_db;
-		$result = $m_db->Query("SELECT team_fullname FROM sbm_team WHERE team_id=".$this->id);
-		if ($result >= 1){
+		$result = $m_db->Query("SELECT team_fullname FROM sbm_team WHERE team_id=".$this->teamid);
+		if ($result > 0){
 			$row=$m_db->Fetch($result);
 			echo($row['team_fullname']);
 		}
 
 	}
 
-	function teamLastResults($teamid){
+	function teamLastResults(){
 		global $m_db;
   		// $oTeam->teamLastResults($_GET['teamid']);
-  		$result = $m_db->Query("CALL return_current_form('".$teamid."')");
+  		$result = $m_db->Query("CALL return_current_form('".$this->teamid."')");
   		if ($result >= 1){
   			echo("<table class=\"table table-bordered\">");
 			echo("<thead><tr>Last Six Results</tr></thead>");

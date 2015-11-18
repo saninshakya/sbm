@@ -47,10 +47,10 @@
 
 	?>
 	</div><!-- end col-xs-12 col-sm-6 col-md-8 -->
-		<div class="col-md-1">
+		<div class="col-md-2">
 			<div class="team-standing">
 			<!-- For team standing -->
-            <label>Team Standing</label>
+            <div class="small-page-title">Team Standing</div>
 			<?php
 				include("classes/team.class.php");
 				$oTeam = new team();

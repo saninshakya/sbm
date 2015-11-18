@@ -22,7 +22,7 @@ class fixture
 		$counter = 1;
 		$league = $m_db->Query("SELECT league_name FROM sbm_league WHERE league_id='".$this->leagueid."'");
 		$row=$m_db->Fetch($league);
-		echo("<div class=\"league-title\">".$row['league_name']."</div>");
+		echo("<div class=\"page-title\">".$row['league_name']."</div>");
 		$result = $m_db->Query("SELECT DISTINCT f.fixture_id, 
 												gf.fixture_id AS fixtureid,
 												gf.game_week,
@@ -66,13 +66,13 @@ class fixture
 				$date =  $now->format('Y-m-d H:i:s');
 				$class = "";
 				if ($row['fixture_date'] < $date)
-					$class = "disabled=\"disabled\""; 
+					$class = "disabled=\"disabled\" class=\"btn-ds\""; 
 				// check if user has already bid 
 				$rslt = $m_db->Query("SELECT weekly_odd_id, user_id FROM sbm_user_weekly_bid WHERE weekly_odd_id = '".$row['weekly_odd_id']."' AND user_id = '".$_SESSION['sbm_user_id']."'");
 				if ($m_db->countRows($rslt) > 0){
-					echo("<td><button disabled=\"disabled\" type=\"button\" class=\"btn btn-info btn-sm\">".$row['odd_home']."</button></td>");
-					echo("<td><button disabled=\"disabled\" type=\"button\" class=\"btn btn-info btn-sm\">".$row['odd_draw']."</button></td>");
-					echo("<td><button disabled=\"disabled\" type=\"button\" class=\"btn btn-info btn-sm\">".$row['odd_away']."</button></td>");
+					echo("<td><button disabled=\"disabled\" type=\"button\" class=\"btn-ds\" class=\"btn btn-info btn-sm\">".$row['odd_home']."</button></td>");
+					echo("<td><button disabled=\"disabled\" type=\"button\" class=\"btn-ds\" class=\"btn btn-info btn-sm\">".$row['odd_draw']."</button></td>");
+					echo("<td><button disabled=\"disabled\" type=\"button\" class=\"btn-ds\" class=\"btn btn-info btn-sm\">".$row['odd_away']."</button></td>");
 				}
 				else{
 					echo("<td><button ".$class." type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#bid\"  data-weeklyoddid=\"".$row['weekly_odd_id']."\" data-odd=\"oh\">".$row['odd_home']."</button></td>");

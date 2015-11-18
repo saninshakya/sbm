@@ -1,1 +1,1 @@
-this is main page
+<div class="welcome">"WELCOME TO ADMINISTRATIVE PANEL!!!"</div>

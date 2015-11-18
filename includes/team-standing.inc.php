@@ -2,11 +2,9 @@
 // to get the league name 
 	include("classes/league.class.php");
 	$oLeague = new league();
-	$oLeague->id = $_GET['leagueid'];
+	$oLeague->leagueid = $_GET['leagueid'];
 ?>
-	<div class="league-title"><?php $oLeague->leagueName(); ?> </div>
-
-
+<div style="margin-left:20px;" class="page-title"><?php $oLeague->leagueName(); ?> </div>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
