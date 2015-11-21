@@ -69,7 +69,11 @@ class fixture
 					$class = "disabled=\"disabled\" class=\"btn-ds\""; 
 				// check if user has already bid 
 				$rslt = $m_db->Query("SELECT weekly_odd_id, user_id FROM sbm_user_weekly_bid WHERE weekly_odd_id = '".$row['weekly_odd_id']."' AND user_id = '".$_SESSION['sbm_user_id']."'");
-				if ($m_db->countRows($rslt) > 0){
+				// To disable the bid if its result is already inserted.
+				$game = $m_db->Query("SELECT COUNT(*) AS gamecount FROM sbm_team_statistics WHERE fixture_id = '".$row['fixture_id']."' AND result != ' '");
+				// echo("SELECT COUNT(*) AS count FROM sbm_team_statistics WHERE fixture_id = '".$row['fixture_id']."' AND result != ' '");
+				$gameresult = $m_db->Fetch($game);
+				if ($m_db->countRows($rslt) > 0 || $gameresult['gamecount'] == 2 ){
 					echo("<td><button disabled=\"disabled\" type=\"button\" class=\"btn-ds\" class=\"btn btn-info btn-sm\">".$row['odd_home']."</button></td>");
 					echo("<td><button disabled=\"disabled\" type=\"button\" class=\"btn-ds\" class=\"btn btn-info btn-sm\">".$row['odd_draw']."</button></td>");
 					echo("<td><button disabled=\"disabled\" type=\"button\" class=\"btn-ds\" class=\"btn btn-info btn-sm\">".$row['odd_away']."</button></td>");

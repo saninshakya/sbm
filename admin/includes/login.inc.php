@@ -16,7 +16,7 @@ if (isset($_POST['login']))
                     
         case 'INVALID':
             $_SESSION['error_message']="Invalid Username / Password!";
-            echo ("<script type=\"text/javascript\">window.location=\"home.php?page=login\"</script>");
+            // echo ("<script type=\"text/javascript\">window.location=\"home.php?page=login\"</script>");
             break;
             
         case 'FILL_THIS_FIELD':
@@ -28,8 +28,21 @@ if (isset($_POST['login']))
             
         default:
             $_SESSION['error_message']="Error occured while login!";
-            echo ("<script type=\"text/javascript\">window.location=\"home.php?page=login\"</script>");
+            // echo ("<script type=\"text/javascript\">window.location=\"home.php?page=login\"</script>");
     }
+}
+
+if (isset($_SESSION['success_message'])) { //If message is set then display the message
+    echo("<div class=\"success_message\">");
+    echo($_SESSION['success_message']);
+    unset($_SESSION['success_message']);
+    echo("</div>");
+}
+if (isset($_SESSION['error_message'])) { //If message is set then display the message
+    echo("<div class=\"error_message\">");
+    echo($_SESSION['error_message']);
+    unset($_SESSION['error_message']);
+    echo("</div>");
 }
 
 ?>

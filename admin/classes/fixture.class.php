@@ -64,7 +64,15 @@ class fixture {
 			echo("<td>".$row['odd_home']."</td>");
 			echo("<td>".$row['odd_draw']."</td>");
 			echo("<td>".$row['odd_away']."</td>");
-			echo("<td><a href=\"home.php?page=fixture&action=result&id=".$row['fixture_id']."&hometeam=".$row['hometeamid']."&awayteam=".$row['awayteamid']."\">ADD RESULT</a></td>");
+
+			$rslt = $m_db->Query("SELECT COUNT(*) AS a FROM sbm_team_statistics 
+									WHERE fixture_id = ".$row['fixture_id']." AND result !=''");
+			$count = $m_db->Fetch($rslt);
+			if ($count['a'] == 0)
+				echo("<td><a href=\"home.php?page=fixture&action=result&id=".$row['fixture_id']."&hometeam=".$row['hometeamid']."&awayteam=".$row['awayteamid']."\">ADD RESULT</a></td>");
+			else
+				echo("<td>Result Already Added.</td>");
+
 			echo("</tr>");
 			$counter++;
 		}
@@ -123,16 +131,18 @@ class fixture {
 								) AS away_team
 								FROM return_gameweek  AS gf 
 								LEFT JOIN sbm_weekly_odd AS wo ON (gf.fixture_id=wo.fixture_id) WHERE gf.fixture_id=$this->id");
+		echo("<table class=\"table table-striped\">");
 		while ($row=$m_db->Fetch($result))
 		{
-			echo("GameWeek:".$row['game_week']. "<br/>");
-			echo("Game Date:".$row['fixture_date']."<br/>");
-			echo("Home Team:".$row['home_team']."<br/>");
-			echo("Away Team:".$row['away_team']."<br/>");
-			echo("Odd Home:".$row['odd_home']."<br/>");
-			echo("Odd Draw:".$row['odd_draw']."<br/>");
-			echo("Odd Away:".$row['odd_away']."<br/>");
+			echo("<tr><td>GameWeek: <b>".$row['game_week']. "</b></td>");
+			echo("<tr><td>Game Date: <b>".$row['fixture_date']."</b></td>");
+			echo("<tr><td>Home Team: <b>".$row['home_team']."</b></td>");
+			echo("<tr><td>Away Team: <b>".$row['away_team']."</b></td>");
+			echo("<tr><td>Odd Home: <b>".$row['odd_home']."</b></td>");
+			echo("<tr><td>Odd Draw: <b>".$row['odd_draw']."</b></td>");
+			echo("<tr><td>Odd Away: <b>".$row['odd_away']."</b></td></tr>");
 		}
+		echo("</table>");
 	}
 
 	/////////////////////////////////////////////
@@ -207,18 +217,24 @@ class fixture {
 			$rslt = $m_db->Query("SELECT * FROM sbm_team_standing WHERE team_id='".$this->awayteamid."'");
 			$row = $m_db->Fetch($rslt);
 			$total_match_played = $row['total_match_played'] + 1;
-			if ($this->away_result == "w")
+			if ($this->away_result == "w"){
 				$total_win = $row['total_win'] + 1;
+				$total_pts = $row['total_pts'] + 3;
+			}
 			else
 				$total_win = $row['total_win'];
 
-			if ($this->away_result == "d")
+			if ($this->away_result == "d"){
 				$total_draw = $row['total_draw'] + 1;
+				$total_pts = $row['total_pts'] + 1;
+			}
 			else
 				$total_draw = $row['total_draw'];
 
-			if ($this->away_result == "l")
+			if ($this->away_result == "l"){
 				$total_loss = $row['total_loss'] + 1;
+				$total_pts = $row['total_pts'];
+			}
 			else
 				$total_loss = $row['total_loss'];
 
@@ -226,7 +242,7 @@ class fixture {
 			$total_yellow_card = $row['total_yellow_card'] + $this->away_yellowcard;
 			$total_goal_score = $row['total_goal_score'] + $this->away_goalscore;
 			$total_goal_concede = $row['total_goal_concede'] + $this->home_goalscore;
-			$total_pts = $row['total_pts'];
+			// $total_pts = $row['total_pts'];
 
 			$update = $m_db->Query("UPDATE 
 									sbm_team_standing 
@@ -243,7 +259,7 @@ class fixture {
 									total_goal_concede = '".$total_goal_concede."' 
 									WHERE team_id = '".$this->awayteamid."'");
 
-			// To update the bidding of users
+			// TO UPDATE THE BIDDING OF USERS
 			if ($this->home_result == "w"){
 				$result = "oh";
 				$odd = "o.odd_home";
@@ -256,7 +272,8 @@ class fixture {
 				$result = "od";
 				$odd = "o.odd_draw";
 			}
-			$updatebid = $m_db->Query("UPDATE
+			// To update the winner bid 
+			$winnerbid = $m_db->Query("UPDATE
 										sbm_user_weekly_bid AS b
 										LEFT JOIN sbm_weekly_odd AS o ON b.weekly_odd_id = o.weekly_odd_id
 										SET
@@ -264,6 +281,16 @@ class fixture {
 										b.payoff = b.amount * ".$odd."
 										WHERE
 										(o.fixture_id = '".$this->id."' AND b.odd_selection = '".$result."')");
+
+			// To update the loser bid 
+			$loserbid = $m_db->Query("UPDATE
+										sbm_user_weekly_bid AS b
+										LEFT JOIN sbm_weekly_odd AS o ON b.weekly_odd_id = o.weekly_odd_id
+										SET
+										b.is_win = 0,
+										b.payoff = 0.00
+										WHERE
+										(o.fixture_id = '".$this->id."' AND b.odd_selection != '".$result."')");
 
 			return "SUCCESS";
 		}

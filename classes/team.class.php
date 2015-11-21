@@ -22,7 +22,7 @@ class team
 								sbm_team_standing as ts 
 								LEFT JOIN sbm_team as t ON (ts.team_id = t.team_id) 
 								WHERE t.league_id =".$this->leagueid." AND ts.season=".$this->season." 
-								ORDER BY pts DESC, GD DESC");
+								ORDER BY pts DESC, pld DESC, GD DESC, ts.total_red_card ASC");
 
 		echo("<table class=\"table table-bordered\">");
 		echo("<thead><tr><th>CLUB</th><th>Pld</th><th>Pts</th></thead>");

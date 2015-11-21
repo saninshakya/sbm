@@ -10,17 +10,17 @@ if (isset($_POST['bid-submit'])){
 	{
 		case 'SUCCESS':
 			$_SESSION['success_message']="Your Bid has been Successfully Place. Thank you.";
-			echo ("<script type=\"text/javascript\">window.location=\"index.php?page=bid\"</script>");
+			echo ("<script type=\"text/javascript\">window.location=\"index.php?page=yourbid\"</script>");
 			break;
                     
         case 'TRY_AGAIN':
             $_SESSION['error_message']="Error Occured Please Try Again Later!";
-            echo ("<script type=\"text/javascript\">window.location=\"index.php?page=bid\"</script>");
+            echo ("<script type=\"text/javascript\">window.location=\"index.php?page=yourbid\"</script>");
             break;
 
         default:
             $_SESSION['error_message']="Error Occured Please Try Again Later!";
-            echo ("<script type=\"text/javascript\">window.location=\"index.php?page=bid\"</script>");
+            echo ("<script type=\"text/javascript\">window.location=\"index.php?page=yourbid\"</script>");
             break;
 
 	}

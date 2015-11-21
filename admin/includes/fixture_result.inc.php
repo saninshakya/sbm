@@ -39,10 +39,8 @@ if (isset($_POST['save']))
             echo ("<script type=\"text/javascript\">window.location=\"home.php?page=fixture\"</script>");
     }
 }
-
-echo("ADD RESULT");
-
 ?>
+<div class="small-page-title">Add Result</div>
 
 <form style="width:90%;" class="form-horizontal" method="post" action="<?php echo($_SERVER['PHP_SELF']."?page=fixture&action=result&id=$id&hometeam=$hometeam&awayteam=$awayteam"); ?>">
 	<div class="panel panel-default">

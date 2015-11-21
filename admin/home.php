@@ -60,11 +60,11 @@ else {
                                             <ul class = "dropdown-menu" aria-labelledby = "dropdownMenu1">
                                                 <?php
                                                 if ((isset($_SESSION['sbm_adminuser'])) && (isset($_SESSION['sbm_adminuser_id']))) {
-                                                    if ($_SESSION['chk'] == true) {
+                                                    // if ($_SESSION['chk'] == true) {
                                                         ?>
                                                         <li> <?php echo("<a href=\"home.php?page=logout\">Logout</a>"); ?></li>
                                                         <?php
-                                                    }
+                                                    // }
                                                 } else {
                                                     ?>
                                                     <li> <?php echo("<a href=\"home.php?page=login\">Sign in</a>"); ?></li>

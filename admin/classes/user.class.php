@@ -26,7 +26,7 @@ class user
 		$result = $m_db->Query("SELECT user_id, username FROM sbm_user WHERE username ='" . $this->user ."' and password='" . md5($this->pass) . "' and role_id='1'");
 		if ($m_db->countRows($result) > 0)
 		{
-			$_SESSION['chk'] = true;
+			// $_SESSION['chk'] = true;
 			$row=$m_db->Fetch($result);
 			$_SESSION['sbm_adminuser']=$row['username'];
 			$_SESSION['sbm_adminuser_id']=$row['user_id'];

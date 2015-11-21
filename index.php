@@ -42,7 +42,7 @@ else {
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-8">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="home.php">
+                            <a class="navbar-brand" href="index.php">
                                 <img alt="Soccer Betway Management" src="images/logo.png"> <div class="site-name">Soccer Betway Management</div>
                             </a>
                         </div>

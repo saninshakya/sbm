@@ -119,7 +119,7 @@
                 <div class="form-group">
                     <label for="bid-amount" class="col-md-3 control-label">Bid Amount*</label>
                     <div class="col-md-9">
-                        <input type="text" id="amount" class="form-control" name="amount" placeholder="Amount in Baht">
+                        <input type="text" id="amount" class="form-control" name="amount" placeholder="Amount in USD">
                         <span class="error"><?php echo($oForm->Error("bid")); ?></span>
                     </div>
                     <input type="hidden" id="odd" class="form-control" name="odd">
