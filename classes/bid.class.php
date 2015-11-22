@@ -78,18 +78,18 @@ class bid
 			}
 			elseif ($row['is_win'] == 0){
 				echo("<td class=\"win-no\">No</td>");
-				$loss = number_format($loss + $row['amount'],2);
+				$loss = $loss + $row['amount'];
 			}
 			elseif ($row['is_win'] == 1){
 				echo("<td class=\"win-yes\">YES</td>");
-				$win = number_format($win + $row['payoff'],2);
+				$win = $win + $row['payoff'];
 			}
 			
 			echo("</tr>");
 			$counter++;
 		}
-		echo("<tr><td colspan=\"9\" style=\"text-align:right\">Total Loss: </td><td colspan=\"2\">".$loss." USD</td></tr>");
-		echo("<tr><td colspan=\"9\" style=\"text-align:right\">Total WIN: </td><td colspan=\"2\">".$win." USD</td></tr>");
+		echo("<tr><td colspan=\"9\" style=\"text-align:right\">Total Loss: </td><td colspan=\"2\">".number_format($loss,2)." USD</td></tr>");
+		echo("<tr><td colspan=\"9\" style=\"text-align:right\">Total WIN: </td><td colspan=\"2\">".number_format($win,2)." USD</td></tr>");
 		echo("</tbody></table>");
 		// $win=1.99;
 		// $loss = 2.95;
