@@ -27,12 +27,19 @@ class team
 		echo("<table class=\"table table-bordered\">");
 		echo("<thead><tr><th>CLUB</th><th>Pld</th><th>Pts</th></thead>");
 		echo("<tbody>");
+		$count = 1;
 		while ($row=$m_db->Fetch($result)){
+			$rank = $m_db->Query("UPDATE 
+				                  sbm_team_standing
+								  SET
+								  ranking = '".$count."'
+								  WHERE team_id = '".$row['id']."'");
 			echo("<tr>");
 			echo("<td><a href=\"index.php?page=team-info&teamid=".$row['id']."&leagueid=".$this->leagueid."\">".$row['name']. "</a></td>");
 			echo("<td>".$row['pld']. "</td>");
 			echo("<td>".$row['pts']. "</td>");
 			echo("</tr>");
+			$count ++;
 		}
 		echo("</tbody></table>");
 	}
@@ -114,7 +121,7 @@ class team
 	function teamLeaguePosition(){
 		global $m_db;
 		$result = $m_db->Query("SELECT 
-								*, ts.total_goal_score - ts.total_goal_concede AS GD
+							    ts.ranking, ts.total_match_played, ts.total_win, ts.total_draw, ts.total_loss, ts.total_pts, ts.total_goal_score - ts.total_goal_concede AS GD
 								FROM 
 								sbm_team_standing as ts 
 								WHERE ts.team_id = ".$this->teamid);
@@ -124,7 +131,7 @@ class team
 		echo("<tbody>");
 		while ($row=$m_db->Fetch($result)){
 			echo("<tr>");
-			echo("<td></td>");
+			echo("<td>".$row['ranking']."</td>");
 			echo("<td>".$row['total_match_played']. "</td>");
 			echo("<td>".$row['total_win']. "</td>");
 			echo("<td>".$row['total_draw']. "</td>");
